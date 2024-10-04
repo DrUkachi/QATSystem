@@ -180,7 +180,7 @@ Now, you have a PostgreSQL database `your_database` with the user `your_username
    python flask_app.py
    ```
 
-   You can decide to use the provided [notebook](link) with the `requests` library to test the created endpoints or use the `streamlit` interface
+   You can decide to use the provided [notebook](https://github.com/DrUkachi/QATSystem/blob/main/api_test.ipynb) with the `requests` library to test the created endpoints or use the `streamlit` interface
    that came with the project to further test and see the interaction.
    
 5. **Start the Streamlit app**
