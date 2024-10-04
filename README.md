@@ -210,12 +210,10 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any questions or inquiries, please contact:
 
-- **Your Name**: [your.email@example.com](mailto:your.email@example.com)
-- **GitHub**: [yourusername](https://github.com/yourusername)
+- **Ukachi Osisiogu**: [ukachi.osi@gmail.com](mailto:ukachi.osi@gmail.com)
+- **GitHub**: [DrUkachi](https://github.com/DrUkachi)
 
 ---
 
-Thank you for your interest in the Document Chatbot! We hope you find it useful for your document processing and conversational AI needs.
+Thank you for your interest in the QATSystem Chatbot! We hope you find it useful for your document processing and conversational AI needs.
 ```
-
-Feel free to replace `yourusername` and `your.email@example.com` with your actual information. Let me know if you need any additional modifications!
