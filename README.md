@@ -20,7 +20,7 @@ To get started with the Document Chatbot, follow these steps:
 
    ```bash
    git clone https://github.com/DrUkachi/qatsystem.git
-   cd document-chatbot
+   cd qatsystem
    ```
 
 2. **Install required packages**:
