@@ -105,17 +105,75 @@ After installation, start the PostgreSQL service:
    - **On Windows**:
      Start the PostgreSQL service using the services management console.
 
-3. **Create a PostgreSQL Database**:
+3. To create a PostgreSQL database with the provided details, follow these steps:
 
-   Open the PostgreSQL shell and create a new database for your project:
+### 1. **Access PostgreSQL Command Line or PgAdmin**
+You can use the PostgreSQL command line (`psql`) or a GUI tool like PgAdmin. Here, is a step-by-step guide if you are using `psql`.
+
+#### Option 1: **Using `psql` Command Line**
+
+1. **Login to PostgreSQL**:
+   Open your terminal and run the following command to log in to PostgreSQL:
 
    ```bash
-   sudo -u postgres psql
-   CREATE DATABASE document_chatbot_db;
+   psql -U postgres
    ```
 
-   You can exit the PostgreSQL shell by typing
-   `\q`.
+   You will be prompted to enter the password for the `postgres` user (the default superuser).
+
+2. **Create a new database**:
+   Once logged in, create the database using the following SQL command:
+
+   ```sql
+   CREATE DATABASE your_database;
+   ```
+
+   This creates a new database named `your_database`.
+
+3. **Create a new user**:
+   Now, create the user with a password by executing:
+
+   ```sql
+   CREATE USER your_username WITH PASSWORD 'your_password';
+   ```
+
+4. **Grant privileges**:
+   Grant all privileges on the new database to the user:
+
+   ```sql
+   GRANT ALL PRIVILEGES ON DATABASE your_database TO your_username;
+   ```
+
+5. **Exit**:
+   Exit the PostgreSQL prompt by typing:
+
+   ```bash
+   \q
+   ```
+
+---
+
+#### Option 2: **Using PgAdmin**
+
+1. **Open PgAdmin**:
+   Connect to your PostgreSQL server.
+
+2. **Create a New Database**:
+   - Right-click on the "Databases" node in the sidebar and select "Create" > "Database."
+   - In the dialog, enter `your_database` as the name, and select the owner (either use `postgres` or the new user you plan to create).
+
+3. **Create a New User (Role)**:
+   - Go to "Login/Group Roles," right-click and select "Create" > "Login/Group Role."
+   - Set the username (`your_username`) and password (`your_password`).
+   - Under the "Privileges" tab, grant the necessary permissions (e.g., `CREATE`, `CONNECT`).
+
+4. **Grant Privileges**:
+   - Navigate to the newly created database.
+   - Under "Properties," assign the new user as the owner or grant them access through the "Privileges" tab.
+
+---
+
+Now, you have a PostgreSQL database `your_database` with the user `your_username` and the given password. You can use these credentials in your application configuration.
 
 4. **Start the Flask server**:
    ```bash
