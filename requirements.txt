@@ -1,0 +1,10 @@
+flask
+langchain
+langchain-huggingface
+langchain-groq
+langchain_community
+pypdf
+faiss-cpu
+scikit-learn
+Werkzeug
+streamlit
