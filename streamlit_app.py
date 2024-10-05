@@ -85,7 +85,9 @@ def main():
                     st.subheader("Answer:")
                     st.write(result["answer"])
                     st.subheader("Key Points:")
-                    st.write(result['bullet_points'])
+                    for bullet in result['bullet_points']:
+                        st.markdown(f"- {bullet}")
+    
                     st.subheader("Test Question:")
                     st.write(result["test_question"])
 
