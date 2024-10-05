@@ -206,25 +206,43 @@ def chat_gen(message, convstore, docstore, follow_up=True):
         return final_answer, bullet_points, follow_up_question
     return final_answer
 
-    
+def parse_bullet_points(response):
+    """
+    Parses the bullet points from the model response.
+
+    Parameters:
+    response (str): The string containing the bullet points in Python list format.
+
+    Returns:
+    list: A list of bullet points.
+    """
+    try:
+        # Evaluate the response as a Python list
+        bullet_points = eval(response)
+        return bullet_points
+    except Exception as e:
+        print(f"Error parsing bullet points: {e}")
+        return []
 
 def generate_bullet_points(final_answer, retrieval, message):
-    """Generate bullet points elaborating on the provided answer."""
+
     context = retrieval['context']
 
     bullet_point_prompt = f"""
-    You just provided the following answer: "{final_answer}"
-    based on the question {message} provided by the user and the context retrieved from the document: "{context}".
-    
-    Now, please provide 3 bullet points to elaborate on the answer given, formatted as a list:
-    - Bullet Point 1: 
-    - Bullet Point 2: 
-    - Bullet Point 3:
-    """
-    
-    bullet_points = llm.invoke(bullet_point_prompt)
-    
-    return bullet_points.content
+      You just provided the following answer: "{final_answer}"
+      based on the question "{message}" provided by the user and the context retrieved from the document: "{context}".
+      Now, please provide 3 bullet points to elaborate on the answer given, formatted as a Python list of strings:
+
+      [
+    "Bullet Point 1: <elaboration>",
+    "Bullet Point 2: <elaboration>",
+    "Bullet Point 3: <elaboration>"
+      ]""".strip()
+
+    bullet_points_result = llm.invoke(bullet_point_prompt)
+    bullet_points = parse_bullet_points(bullet_points_result.content)
+
+    return bullet_points
 
 def generate_follow_up_answer(follow_up_question, convstore, docstore):
     """Generate a follow-up answer for the provided question."""
