@@ -111,7 +111,7 @@ def process_query():
     final_answer, bullet_points, follow_up_question = chat_gen(query, convstore, docstore)
     # Ensure bullet_points is a string
     if isinstance(bullet_points, list):
-        bullet_points = "\n".join(bullet_points)  # Convert list to string, each bullet on a new line
+        bullet_points_str = "\n".join(bullet_points)  # Convert list to string, each bullet on a new line
     
     if isinstance(follow_up_question, list):
         follow_up_question = "\n".join(follow_up_question)  # Convert list to string, each bullet on a new line
@@ -125,7 +125,7 @@ def process_query():
     # Store metadata
     store_query_metadata(query)
     
-    question_id = store_response_metadata(final_answer, bullet_points, follow_up_question, follow_up_answer)
+    question_id = store_response_metadata(final_answer, bullet_points_str, follow_up_question, follow_up_answer)
     print("Answer, Bullet Points, Test Question, and Follow-up Answer Stored")
 
     return jsonify({
